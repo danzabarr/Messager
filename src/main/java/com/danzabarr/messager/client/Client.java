@@ -27,8 +27,6 @@ public class Client implements ConnectionListener
 
     private Client() {}
 
-    //public static final String SERVER_ADDRESS = "127.0.0.1";//"2.24.151.114";
-    //public static final int PORT = 8888;
     public static final String CLIENT_SALT = "$2a$10$Ei3R6HThMZQ2n4sGnLbC/e";
 
     private Connection connection;
