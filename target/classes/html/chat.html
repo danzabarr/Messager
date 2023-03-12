@@ -1,0 +1,143 @@
+<body>
+<div id="scroller">
+
+    <!--<div onclick="app.link('Hello!')">Link</div>-->
+    <!-- new content dynamically inserted here -->
+    <div id="anchor"></div>
+</div>
+  <style>
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body, ::-webkit-scrollbar { background-color: #2f3239; }
+    ::-webkit-scrollbar-track { background-color: #282a3088; }
+    ::-webkit-scrollbar-thumb { background: #1e212788; }
+    ::-webkit-scrollbar-thumb:hover { background: #1e212788; }
+
+    ::-webkit-scrollbar
+    {
+      width: 20px;
+      padding-left: 10px;
+    }
+
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-thumb,
+    ::-webkit-scrollbar-thumb:hover
+    {
+      border-radius: 20px;
+      border: 5px solid rgba(0, 0, 0, 0);
+      background-clip: padding-box;
+    }
+
+    body
+    {
+      /*height: 100.001vh;*/
+      color: #dedede;
+      overflow-x: hidden;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      /*box-shadow: inset 0px 4px 10px 0px rgba(0,0,0,0.125);*/
+    }
+
+    #scroller
+    {
+      -webkit-transform: translate3d(0,0,0);
+    }
+
+    #scroller *
+    {
+        /*overflow-anchor: none;*/
+    }
+
+    #anchor
+    {
+      /*overflow-anchor: auto;*/
+      height: 1px;
+      width: 100%;
+    }
+
+    .message {
+      font-family: Tahoma, sans-serif;
+      padding: 5px 25px 5px 25px;
+      line-height: 1.5;
+      font-size: 14px;
+      transition: background-color .1s;
+    }
+
+    .message:hover
+    {
+        background-color: rgba(0, 0, 0, .05);
+    }
+
+    .message > * {
+
+      display: inline;
+        /* vertical-align: top;*/
+
+    }
+
+    .text img {
+        display: block;
+    }
+
+    .text {
+      color: #ededed;
+    }
+
+    a.sender {
+        text-decoration: none;
+        color: lime;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .timestamp {
+      color: #b9b9b9;
+      font-size: 11px;
+    }
+
+    .timestamp, .sender {
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* IE10+/Edge */
+      user-select: none; /* Standard */
+    }
+
+  </style>
+
+  <script>
+
+    let scroller = document.querySelector('#scroller');
+    let anchor = document.querySelector('#anchor');
+
+    function htmlToElement(html) {
+        var template = document.createElement('template');
+        html = html.trim();
+        template.innerHTML = html;
+        return template.content.firstChild;
+    }
+
+    function appendHTML(html) {
+      let msg = htmlToElement(html);
+
+      let atBottom = Math.abs(document.body.scrollHeight - document.body.scrollTop - document.body.clientHeight) < 5;
+      scroller.insertBefore(msg, anchor);
+
+      if (atBottom)
+      {
+          scroller.style.display='none';
+          scroller.offsetHeight;
+          scroller.style.display='block';
+          anchor.scrollIntoView();
+      }
+    }
+
+  </script>
+</body>
+

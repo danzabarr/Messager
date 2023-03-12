@@ -1,0 +1,26 @@
+
+#titleBar
+{
+    -fx-background-color: #292b30;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.titlebar-button {
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+}
+
+#close
+{
+    -fx-background-radius: 0 10 0 0;
+}
+
+.titlebar-button:hover
+{
+    -fx-background-color: #ffffff20;
+}
+
+#close:hover
+{
+    -fx-background-color: #ff0000cc;
+}

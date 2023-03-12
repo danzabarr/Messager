@@ -1,0 +1,40 @@
+.root
+{
+    -fx-background-color: #2f3239;
+    -fx-background-radius: 10;
+}
+
+.input,
+.buttons
+{
+    -fx-background-color: #363a42cc;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 14px;
+    -fx-background-radius: 1.5em;
+    -fx-padding: 1em 1.25em;
+}
+
+.buttons
+{
+    -fx-background-color: #ffffff08;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ffffff00;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+.buttons:hover
+{
+    -fx-background-color: #ffffff24;
+    -fx-border-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0);
+
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+#prompt {
+    -fx-text-fill: white;
+    -fx-text-size: 16px;
+}

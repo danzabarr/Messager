@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.danzabarr.messager.client.ChatController">
+    <children>
+        <fx:include source="title-bar.fxml" />
+      <VBox VBox.vgrow="ALWAYS">
+         <children>
+            <WebView id="webview" fx:id="webView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="input" onAction="#enter" promptText="Write a message" styleClass="input">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </VBox>
+    </children>
+   <stylesheets>
+      <URL value="@../css/common.css" />
+      <URL value="@../css/titlebar.css" />
+   </stylesheets>
+
+</VBox>
