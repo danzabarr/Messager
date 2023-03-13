@@ -5,65 +5,11 @@ import java.util.Properties;
 
 public class MySQLConnection
 {
-    public static void main(String args[])
-    {
-        if (false)
-        try
-        {
-            Database db = new Database();
-
-            User user = db.registerUser("billy", "nomates");
-
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    public static String padRight(String s, int n) {
-        return String.format("%-" + n + "s", s);
-    }
-
-    public static String padLeft(String s, int n) {
-        return String.format("%" + n + "s", s);
-    }
-
-    public static void printResultSet(ResultSet resultSet) throws SQLException
-    {
-        ResultSetMetaData rsmd = resultSet.getMetaData();
-        int columnCount = rsmd.getColumnCount();
-        int pad = 16;
-
-        for (int i = 1; i <= columnCount; i++)
-            System.out.print(padRight(rsmd.getColumnName(i), pad));
-
-        System.out.println();
-
-        while (resultSet.next())
-        {
-            for (int i = 1; i <= columnCount; i++)
-                System.out.print(padRight(resultSet.getString(i), pad));
-            System.out.println();
-        }
-    }
-
     protected Connection connection;
 
-    public MySQLConnection() throws SQLException
+    public MySQLConnection(String host_name, int port, String database, String user_name, String password)
+            throws SQLException
     {
-        this("localhost", 3306, "messager", "root", "root");
-    }
-
-    public MySQLConnection(String host_name, int port, String database, String user_name, String password) throws SQLException
-    {
-        /*
-        String host_name = "db5012113665.hosting-data.io";
-        String database = "dbs10192063";
-        String user_name = "dbu2899544";
-        String password = "7097607Messager!";
-        */
-
         //Class.forName("com.mysql.cj.jdbc.Driver");
 
         //System.setProperty("javax.net.ssl.trustStore", KEY_STORE_FILE_PATH);
@@ -80,6 +26,8 @@ public class MySQLConnection
         properties.setProperty("verifyServerCertificate", "false");
 
         connection = DriverManager.getConnection(url, properties);
+        System.out.println("Connected to database: " + database);
+
     }
 
     /**
@@ -102,5 +50,28 @@ public class MySQLConnection
         int rs = stmt.executeUpdate(query);
 
         return rs;
+    }
+
+    public static String padRight(String s, int n) {
+        return String.format("%-" + n + "s", s);
+    }
+
+    public static void printResultSet(ResultSet resultSet) throws SQLException
+    {
+        ResultSetMetaData rsmd = resultSet.getMetaData();
+        int columnCount = rsmd.getColumnCount();
+        int pad = 16;
+
+        for (int i = 1; i <= columnCount; i++)
+            System.out.print(padRight(rsmd.getColumnName(i), pad));
+
+        System.out.println();
+
+        while (resultSet.next())
+        {
+            for (int i = 1; i <= columnCount; i++)
+                System.out.print(padRight(resultSet.getString(i), pad));
+            System.out.println();
+        }
     }
 }

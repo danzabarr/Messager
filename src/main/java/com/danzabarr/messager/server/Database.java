@@ -9,9 +9,10 @@ import java.sql.SQLException;
 
 public class Database extends MySQLConnection
 {
-    public Database() throws SQLException
+    public Database(String host_name, int port, String database, String user_name, String password)
+            throws SQLException
     {
-        super();
+        super(host_name, port, database, user_name, password);
     }
 
     public User registerUser(String username, String password)

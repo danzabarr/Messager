@@ -1,7 +1,6 @@
 package com.danzabarr.messager.server;
 
 import com.danzabarr.messager.core.*;
-import com.mysql.cj.log.Log;
 
 import javax.net.ServerSocketFactory;
 import java.io.IOException;
@@ -36,8 +35,8 @@ public class Server extends Thread implements ConnectionListener
         Server server = new Server(options);
         try
         {
-            server.startServer(options.isLocalhost());
-            server.connectDatabase();
+            server.connectDatabase(options.db_hostname, options.db_port, options.db_database, options.db_username, options.db_password);
+            server.startServer(options.localhost);
         }
         catch (IOException e)
         {
@@ -66,10 +65,10 @@ public class Server extends Thread implements ConnectionListener
     {
         ServerSocketFactory factory = ServerSocketFactory.getDefault();
 
-        System.out.println("Starting server on port: " + options.getPort());
+        System.out.println("Starting server on port: " + options.port);
         serverSocket = localhost
-                ? factory.createServerSocket(options.getPort(), 0, InetAddress.getLoopbackAddress())
-                : factory.createServerSocket(options.getPort());
+                ? factory.createServerSocket(options.port, 0, InetAddress.getLoopbackAddress())
+                : factory.createServerSocket(options.port);
 
         start();
     }
@@ -337,10 +336,10 @@ public class Server extends Thread implements ConnectionListener
         connection.sendRequest(request, Connection.Encryption.RSA_AES);
     }
 
-    public void connectDatabase()
+    public void connectDatabase(String host_name, int port, String database, String user_name, String password)
             throws SQLException
     {
-        db = new Database();
+        db = new Database(host_name, port, database, user_name, password);
     }
 
     private void handleLogoutRequest(Connection connection)
