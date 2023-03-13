@@ -5,9 +5,9 @@
 </br>
 
 The server program is a command line application, and can be run using the following command, from the project root 'Messager' directory:
-<code>java -cp out/production/Messager;lib/* com/danzabarr/messager/server/Server port</code>
+<code>java -cp out/production/Messager;lib/* com/danzabarr/messager/server/Server boolean:localhost int:port string:db_hostname int:db_port string:db_database string:db_username string:db_password</code>
 
-The server also requires a <b>MySQL database</b> be running on the server machine, on the port 3306, and expects a user table with the following fields:
+The server also requires a <b>MySQL database</b> be running on the server machine, and expects a user table with the following fields:
 
 <table>
   <tr>
