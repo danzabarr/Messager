@@ -5,7 +5,8 @@
 </br>
 
 The server program is a command line application, and can be run using the following command, from the project root 'Messager' directory:
-<code>java -cp out/production/Messager;lib/* com/danzabarr/messager/server/Server boolean:localhost int:port string:db_hostname int:db_port string:db_database string:db_username string:db_password</code>
+
+<code>java -cp target/classes;lib/* com/danzabarr/messager/server/Server boolean:localhost int:port string:db_hostname int:db_port string:db_database string:db_username string:db_password</code>
 
 The server also requires a <b>MySQL database</b> be running on the server machine, and expects a user table with the following fields:
 
@@ -16,6 +17,8 @@ The server also requires a <b>MySQL database</b> be running on the server machin
     <th>password</th>
   </tr>
 </table>
+
+To run the server using a public/external IP address, you will need to set up port forwarding.
 
 
 Messager is built using <b>Maven</b> and an executable jar file for the client program is available here: <a href="https://github.com/danzabarr/Messager/tree/main/out/artifacts/Messager_jar">out/artifacts/Messager_jar/Messager.jar</a>
