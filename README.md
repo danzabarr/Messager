@@ -30,7 +30,7 @@ The client can also be run as a command line application.
 <li>To run, download the contents of the Messager project, specifically the 'out' and 'lib' directories</li>
 <li>Set the working directory to the Messager project directory.</li>
 <li>Execute the following command with the host and port arguments:</br>
-<code>java -cp out/production/Messager;lib/* com/danzabarr/messager/client/Client host port</code></li>
+<code>java -cp target/classes;lib/* com/danzabarr/messager/client/Client host port</code></li>
 </ul>
 
 
