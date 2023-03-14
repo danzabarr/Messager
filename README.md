@@ -8,7 +8,7 @@ The server program is a command line application, and can be run using the follo
 
 <code>java -cp target/classes;lib/* com/danzabarr/messager/server/Server boolean:localhost int:port string:db_hostname int:db_port string:db_database string:db_username string:db_password</code>
 
-The server also requires a <b>MySQL database</b> be running on the server machine, and expects a user table with the following fields:
+The server also requires a <b>MySQL database</b> be accessible from the supplied credentials, and expects a user table with the following fields:
 
 <table>
   <tr>
